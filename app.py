@@ -137,7 +137,7 @@ app.layout = html.Div([
         html.H1('Maped Earthquakes in Nepal'),
         dcc.Graph(id='graph', figure = fig)   
         
-    ], className = 'six columns'),
+    ], className = 'eight columns'),
 ])
 
 
