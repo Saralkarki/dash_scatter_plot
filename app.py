@@ -39,21 +39,21 @@ server = app.server
 
 
 
-datamap = go.Data([go.Scattermapbox(
+# datamap = go.Data([go.Scattermapbox(
    
-    lat = df.Lat,
-    lon = df.Long,
-    mode = 'markers',
-    text = df.text,
-    name = 'Eq is Nepal',
+#     lat = df.Lat,
+#     lon = df.Long,
+#     mode = 'markers',
+#     text = df.text,
+#     name = 'Eq is Nepal',
     
-    marker=go.scattermapbox.Marker(
-            size=9,
-            color= ['red','green','yellow','blue','aqua'],
-            opacity=0.5
-        ),
-        hoverinfo= 'text'
-        )])
+#     marker=go.scattermapbox.Marker(
+#             size=9,
+#             color= ['red','green','yellow','blue','aqua'],
+#             opacity=0.5
+#         ),
+#         hoverinfo= 'text'
+#         )])
 
 layoutmap = go.Layout(
     title='Earthquake in Nepal',
@@ -75,43 +75,69 @@ layoutmap = go.Layout(
         ),
         pitch=0,
         zoom=5.5,
-        style='basic',
+        style='outdoors',
         
     ),
 )
-print(df.head())
-fig = dict(data = datamap , layout = layoutmap)
-# fig = dict (data =  [
-#                 dict(
-#                     lon = df_1['Long'],
-#                     lat = df_1['Lat'],
-#                     type = 'scattermapbox',
-#                     name = 'ea',
-#                     text = df_1.text,
-#                     marker = dict(
-#                         color = ['aqua','blue'],
-#                         # showscale = True
-#                     )
-#                 ),
-#                 dict(
-#                      text = df_2.text,
-#                     name = 'Earthquake',
-#                     type = 'scattermapbox',
-#                     lon = df_2['Long'],
-#                     lat = df_2['Lat'],
-#                     marker = dict(
-#                         color = 'red',
-#                         symbol = 'circle'
-#                     )
-#                 )
-#             ], layout = layoutmap)
+data = [dict ( lon = df_1['Long'],
+                    lat = df_1['Lat'],
+                    type = 'scattermapbox',
+                    name = 'Slight Damage',
+                    text = df_1.text,
+                    marker = dict(
+                        color = '#00ac46',
+                        size = 6
+                        # showscale = True
+                        )),
+        dict ( lon = df_2['Long'],
+                    lat = df_2['Lat'],
+                    type = 'scattermapbox',
+                    name = 'Minor Damage',
+                    text = df_2.text,
+                    marker = dict(
+                        color = '#780000',
+                        size = 7
+                        # showscale = True
+                        )),
+        dict ( lon = df_3['Long'],
+                    lat = df_3['Lat'],
+                    type = 'scattermapbox',
+                    name = 'Limited Damage',
+                    text = df_3.text,
+                    marker = dict(
+                        color = '#dc0000',
+                        size = 8
+                        # showscale = True
+                        )),
+         dict ( lon = df_4['Long'],
+                    lat = df_4['Lat'],
+                    type = 'scattermapbox',
+                    name = 'Severe Damage',
+                    text = df_4.text,
+                    marker = dict(
+                        color = '#fd8c00',
+                        size = 9
+                        # showscale = True
+                        )),
+         dict ( lon = df_5['Long'],
+                    lat = df_5['Lat'],
+                    type = 'scattermapbox',
+                    name = 'Great Damage',
+                    text = df_5.text,
+                    marker = dict(
+                        color = '#fdc500',
+                        size = 10
+                        # showscale = True
+                        )),]
+
+fig = dict(data = data , layout = layoutmap)
 
 app.layout = html.Div([
     html.Div([
         html.H1('Maped Earthquakes in Nepal'),
         dcc.Graph(id='graph', figure = fig)   
         
-    ]),
+    ], className = 'eight columns'),
 ])
 
 
