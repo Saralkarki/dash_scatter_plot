@@ -1,8 +1,8 @@
 import pandas as pd
 import plotly.graph_objects as go
 
+from map_box import mapbox_access_token
 
-mapbox_access_token = 'pk.eyJ1Ijoic2FyYWxrYXJraSIsImEiOiJjazBxaWNtZjMwODlpM2dueWs4a3duZHo3In0.UB7TmtldopqipGn3NvpqoQ'
 df = pd.read_csv('data/earthquake.csv')
 df['text'] = df['Epicenter'] + ',' + df['Magnitude'].astype(str)
 site_lat = df.Lat
